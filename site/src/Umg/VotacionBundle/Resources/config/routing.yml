@@ -128,6 +128,6 @@ evaluacion_home:
     resource:   "@UmgVotacionBundle/Controller/EvaluacionController.php"
     type:       annotation
 
-rcatedratico_home:
-    resource:   "@UmgVotacionBundle/Controller/RcatedraticoController.php"
-    type:       annotation
+#rcatedratico_home:
+#    resource:   "@UmgVotacionBundle/Controller/RcatedraticoController.php"
+#    type:       annotation
