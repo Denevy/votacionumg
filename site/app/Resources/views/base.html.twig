@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-      <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SEDUMG</title>
   <!-- BOOTSTRAP STYLES-->
@@ -11,12 +11,35 @@
      <!-- MORRIS CHART STYLES-->
     <link href={{ asset('bundles/umgvotacion/js/morris/morris-0.4.3.min.css') }} rel="stylesheet" />
         <!-- CUSTOM STYLES-->
+    <link rel='stylesheet' id='wp-color-picker-css'  href={{ asset('bundles/umgvotacion/css/color-picker.min.css') }} type='text/css' media='all' />
+    <link href={{ asset('bundles/umgvotacion/css/select2.css') }} rel="stylesheet">
     <link href={{ asset('bundles/umgvotacion/css/custom.css') }} rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
-     
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href={{ asset('bundles/brown298datatables/css/dataTables.css') }} rel="stylesheet">
+        <!-- JQUERY SCRIPTS -->
+    <script src={{ asset('bundles/umgvotacion/js/jquery-1.10.2.js') }}></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src={{ asset('bundles/umgvotacion/js/bootstrap.min.js') }}></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src={{ asset('bundles/umgvotacion/js/jquery.metisMenu.js') }}></script>
+     <!-- MORRIS CHART SCRIPTS -->
+    <script src={{ asset('bundles/umgvotacion/js/morris/raphael-2.1.0.min.js') }}></script>
+    <script src={{ asset('bundles/umgvotacion/js/morris/morris.js') }}></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src={{ asset('bundles/umgvotacion/js/custom.js') }}></script>
+    <script src={{ asset('bundles/umgvotacion/js/jquery-1.10.2.js') }}></script>
+    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type='text/javascript' src={{ asset('bundles/umgvotacion/js/jquery-migrate.min.js') }}></script>
+    <script type='text/javascript' src={{ asset('bundles/umgvotacion/js/html5shiv.js') }}></script>
+    <script type='text/javascript' src={{ asset('bundles/umgvotacion/js/respond.min.js') }}></script>
+    <script type='text/javascript' src={{ asset('bundles/umgvotacion/js/ie10-viewport-bug-workaround.js') }}></script>
+    <script type="text/javascript" src="{{ asset('bundles/umgvotacion/js/jquery.dataTables.min.js') }}"></script>
+    <script src={{ asset('bundles/umgvotacion/js/select2.min.js') }}></script>
+     <!-- GOOGLE FONTS-->   
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    {% block stylesheets %}{% endblock %}  
 </head>
-<body>
+<body class="home page page-id-5 page-template page-template-templates page-template-page-full-width-flush page-template-templatespage-full-width-flush-php">
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -28,18 +51,15 @@
                 </button>
                 <a class="navbar-brand" href="index.html">SEDUMG</a> 
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> &nbsp; <a href="login.html" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+            <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> Usuario: {{ app.user.username }} &nbsp; <a href={{path('fos_user_security_logout')}} class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
-                <nav class="navbar-default navbar-side" role="navigation">
+        <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-        <li class="text-center">
-                    <img src={{ asset('bundles/umgvotacion/img/find_user.png') }} class="user-image img-responsive"/>
-          </li>     
+                    <li class="text-center">
+                    <img src={{ asset('bundles/umgvotacion/img/umg.png') }} class="user-image img-responsive"/>
+                    </li>     
                     <li>
                         <a class="#"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -49,72 +69,53 @@ font-size: 16px;"> &nbsp; <a href="login.html" class="btn btn-danger square-btn-
                             <li>
                                 <a href="#">Second Level Link</a>
                             </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-                               
-                            </li>
                         </ul>
-
                     </li>
                     <li>
                         <a  href="#"><i class="fa fa-sitemap fa-3x"></i>Administración <span class="fa arrow"></span> </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Jornada</a>
+                                <a href={{path('jornada')}} title="jornada">Jornada</a>
                             </li>
                             <li>
-                                <a href="#">Carrera</a>
+                                <a href={{path('carrera')}} title="carrera">Carrera</a>
                             </li>
                             <li>
-                                <a href="#">Campus</a>
+                                <a href={{path('campus')}} title="Campus">Campus</a>
                             </li>
                             <li>
-                                <a href="#">Curso</a>
+                                <a href={{path('curso')}} title="Cursos">Curso</a>
                             </li>
                             <li>
-                                <a href="#">Pensum</a>
+                                <a href={{path('pensum')}} title="Pensum">Pensum</a>
                             </li>
                             <li>
-                                <a href="#">Catedraticos</a>
+                                <a href={{path('catedratico')}} title="Catedráticos">Catedraticos</a>
                             </li>
                             <li>
-                                <a href="#">Alumnos</a>
+                                <a href={{path('alumno')}} title="Catedráticos">Alumnos</a>
                             </li>
                         </ul>
-
                     </li>
                     <li>
                         <a  href="#"><i  class="fa fa-desktop fa-3x"></i>Evaluaciones <span class="fa arrow"></span> </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Administrar</a>
+                                <a href={{path('evaluacion')}} title="Administrar evaluaciones">Administrar</a>
                             </li>
                             <li>
-                                <a href="#">Tipos de preguntas</a>
+                                <a href={{path('tipopreguntum')}} title="Administrar tipo de preguntas">Tipos de preguntas</a>
                             </li>
                             <li>
-                                <a href="#">Opciones</a>
+                                <a href={{path('opcion')}} title="Administrar opciones de respuestas">Opciones</a>
                             </li>
                         </ul>
-
                     </li>
-               <li  >
+                    <li>
                         <a   href="#"><i class="fa fa-bar-chart-o fa-3x"></i>Cargar Archivos <span class="fa arrow"></span> </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Cargar Alumnos</a>
+                                <a href={{path('cargararchivo')}} title="Cargar evaluaciones">Cargar Alumnos</a>
                             </li>
                         </ul>
 
@@ -125,63 +126,36 @@ font-size: 16px;"> &nbsp; <a href="login.html" class="btn btn-danger square-btn-
                             <li>
                                 <a href="#">Reportes Docente</a>
                             </li>
-                                </ul>
-                               
+                        </ul>                               
+                    </li>                        
+                    <li  >
+                        <a ><i class="fa fa-bolt fa-3x"></i>Configuración de Cuenta<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href={{path('fos_user_change_password')}} >Cambiar Constraseña</a>
                             </li>
-                        </ul>
-                      </li>  
-                  <li  >
-                        <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
+                        </ul> 
                     </li> 
-                </ul>
-               
-            </div>
-            
+                </ul>               
+            </div>            
         </nav>  
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Sistema de Evaluación Docente</h2>   
-                        <h5>Bienvenido</h5>
-                        
+                    <h2>{%block titulo%}{%endblock%}</h2>                      
                     </div>
-                </div>              
-                 <!-- /. ROW  -->
-                  <hr />
-            <div class="row">
-           sdgasdgjlasdjf
-      </div>
-                 <!-- /. ROW  -->
-                <hr />  
-                <hr>
-            <div class="row">
-                 acacasadfasdfsddf
-      </div>
-                <hr />              
-                <div class="row">
-                       Estudiantes UMG      
-          </div>
-             <!-- /. PAGE INNER  -->
+                </div>
+                    <div class="row">
+                    {% block body %}{% endblock %}
+                    </div> 
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>
+        {% block javascripts %}{% endblock %}
 
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src={{ asset('bundles/umgvotacion/js/jquery-1.10.2.js') }}></script>
-      <!-- BOOTSTRAP SCRIPTS -->
-    <script src={{ asset('bundles/umgvotacion/js/bootstrap.min.js') }}></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src={{ asset('bundles/umgvotacion/js/jquery.metisMenu.js') }}></script>
-     <!-- MORRIS CHART SCRIPTS -->
-     <script src={{ asset('bundles/umgvotacion/js/morris/raphael-2.1.0.min.js') }}></script>
-    <script src={{ asset('bundles/umgvotacion/js/morris/morris.js') }}></script>
-      <!-- CUSTOM SCRIPTS -->
-    <script src={{ asset('bundles/umgvotacion/js/custom.js') }}></script>
-    
-   
 </body>
 </html>

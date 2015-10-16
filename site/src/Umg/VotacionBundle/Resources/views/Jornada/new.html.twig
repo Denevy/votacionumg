@@ -1,15 +1,6 @@
 {% extends '::base.html.twig' %}
-
 {% block body -%}
-    <h1>Jornada creation</h1>
-
+    <h1>Crear Jornada</h1>
     {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('jornada') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <a href="{{ path('jornada') }}" class="btn btn-primary"> Regresar </a>  
 {% endblock %}
