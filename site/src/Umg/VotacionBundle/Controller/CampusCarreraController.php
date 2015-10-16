@@ -78,7 +78,7 @@ class CampusCarreraController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => 'Guardar',
-            'attr'  => array('class'=>'btn btn-info'),
+            'attr'  => array('class'=>'fa fa-check btn btn-success'),
         ));
 
         return $form;
@@ -177,7 +177,7 @@ class CampusCarreraController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => 'Actualizar',
-            'attr'  => array('class' => 'btn btn-info'),
+            'attr'  => array('class' => 'fa fa-check btn btn-success'),
         ));
 
         return $form;

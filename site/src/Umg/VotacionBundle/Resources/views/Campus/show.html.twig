@@ -9,12 +9,12 @@
                             {{ entity.Campus }}
                         </div>
                         <div class="panel-body">
-                          	<div class="table table-striped table-bordered table-hover">
+                          	<div class="table table-striped table-bordered table-hover table-responsive">
         						{{ addDataTable(dataTable) }}
         					</div>  
                         </div>
-                        <a href={{ path('campuscarrera_new', {'id': entity.id}) }} class="btn btn-primary">Asiganar carrera a campus</a>
-                        <a href="{{ path('campus') }}" class="btn btn-primary">Regresar a la lista</a>
+                        <a href={{ path('campuscarrera_new', {'id': entity.id}) }} class="fa fa-pencil btn btn-success">Asiganar carrera a campus</a>
+                        <a href="{{ path('campus') }}" class="fa fa-list btn btn-info">Regresar</a>
                     </div>
                      <!-- End Form Elements -->
                 </div>
