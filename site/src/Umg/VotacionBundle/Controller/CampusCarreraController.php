@@ -78,7 +78,7 @@ class CampusCarreraController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => 'Guardar',
-            'attr'  => array('class'=>'btn btn-primary'),
+            'attr'  => array('class'=>'btn btn-info'),
         ));
 
         return $form;
@@ -177,7 +177,7 @@ class CampusCarreraController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => 'Actualizar',
-            'attr'  => array('class' => 'btn btn-primary'),
+            'attr'  => array('class' => 'btn btn-info'),
         ));
 
         return $form;
@@ -253,7 +253,10 @@ class CampusCarreraController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('campuscarrera_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => 'Delete',
+                'attr'  => array('class'=>'btn btn-info'),
+                ))
             ->getForm()
         ;
     }

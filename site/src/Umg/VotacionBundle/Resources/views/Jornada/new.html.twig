@@ -1,6 +1,17 @@
 {% extends '::base.html.twig' %}
 {% block body -%}
-    <h1>Crear Jornada</h1>
-    {{ form(form) }}
-    <a href="{{ path('jornada') }}" class="btn btn-primary"> Regresar </a>  
+    <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Crear Jornada
+                        </div>
+                        {{ form(form) }}
+    					<a href="{{ path('jornada') }}" class="fa fa-list btn btn-info"> Regresar </a>  
+                        
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>       
 {% endblock %}

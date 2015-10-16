@@ -1,16 +1,20 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Carrera edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('carrera') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Editar Carrera
+                        </div>
+                        <div class="panel-body">
+                            {{ form(edit_form) }} 
+                            <a href="{{ path('carrera') }}"  class="fa fa-list btn btn-info"> Regresar</a>
+                            {{ form(delete_form) }}
+                        </div>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>
 {% endblock %}

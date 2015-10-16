@@ -1,15 +1,18 @@
 {% extends '::base.html.twig' %}
-
 {% block body -%}
-    <h1>Campus creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('campus') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Crear Campus
+                        </div>
+                        {{ form(form) }}
+    					<a href="{{ path('campus') }}" class="btn btn-primary"> Regresar </a>  
+                        
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>       
 {% endblock %}
+

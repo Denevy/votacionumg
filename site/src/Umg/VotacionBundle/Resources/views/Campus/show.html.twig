@@ -1,15 +1,22 @@
 {% extends '::base.html.twig' %}
-
-{% block titulo %}
-    <h1 class="page-title">{{ entity.Campus }}</h1>
-{% endblock %}
 {% block body -%}
-<div class="table-responsive">
-  <div class="table-bordered">
-                {{ addDataTable(dataTable) }}
-</div>
-</div>
-<a href={{ path('campuscarrera_new', {'id': entity.id}) }} class="btn btn-primary">Asiganar carrera al campus</a>
-<br />
-<a href="{{ path('campus') }}">Regresar a la lista</a>
+
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            {{ entity.Campus }}
+                        </div>
+                        <div class="panel-body">
+                          	<div class="table table-striped table-bordered table-hover">
+        						{{ addDataTable(dataTable) }}
+        					</div>  
+                        </div>
+                        <a href={{ path('campuscarrera_new', {'id': entity.id}) }} class="btn btn-primary">Asiganar carrera a campus</a>
+                        <a href="{{ path('campus') }}" class="btn btn-primary">Regresar a la lista</a>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>       
 {% endblock %}
