@@ -1,19 +1,20 @@
 {% extends '::base.html.twig' %}
-{% block titulo %}
-    <h1 class="page-title">Asignación de cursos a la carrera</h1>
-{% endblock %}
-
 
 {% block body -%}
-    {{ form_javascript(form) }}
-    
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-    <a href="{{ path('campuscarrera_show',{'id':entity.CampusCarrera.id}) }}">
-            Regresar a la carrera
-        </a>
-    </li>
-</ul>
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="page-title">Asignación de cursos a la carrera</h1>
+                        </div>
+                        <div class="panel-body">
+                        	{{ form_javascript(form) }}
+                            {{ form(form) }} 
+                            <a href="{{ path('campuscarrera_show' ,{'id':entity.CampusCarrera.id}) }}"  class="fa fa-list btn btn-info"> Regresar a la carrera</a>
+                        </div>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>
 {% endblock %}

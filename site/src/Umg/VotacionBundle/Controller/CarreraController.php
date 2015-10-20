@@ -81,7 +81,7 @@ class CarreraController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Crear',
+            'label' => ' Crear',
             'attr'  => array('class'=>'fa fa-check btn btn-success'),
             ));
 
@@ -173,7 +173,7 @@ class CarreraController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
+            'label' => ' Actualizar',
             'attr'  => array(
             'class'=>'fa fa-refresh btn btn-success'),
             ));
@@ -252,7 +252,7 @@ class CarreraController extends Controller
             ->setAction($this->generateUrl('carrera_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
-                'label' => 'Delete',
+                'label' => ' Borrar',
                 'attr'  => array('class'=>'fa fa-pencil btn btn-danger'),
                 ))
             ->getForm()

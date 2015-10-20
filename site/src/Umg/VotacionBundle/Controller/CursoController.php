@@ -173,8 +173,8 @@ class CursoController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
-            'attr'  => array('class'=>'btn btn-primary')
+            'label' => ' Actualizar',
+            'attr'  => array('class'=>'btn btn-success fa fa-refresh')
         ));
 
         return $form;
@@ -251,7 +251,7 @@ class CursoController extends Controller
             ->setAction($this->generateUrl('curso_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
-                'label' => 'Delete',
+                'label' => ' Borrar',
                 'attr'  => array('class'=>'fa fa-pencil btn btn-danger'),))
             ->getForm()
         ;

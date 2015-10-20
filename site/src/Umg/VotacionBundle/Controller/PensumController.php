@@ -81,7 +81,7 @@ class PensumController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Guardar',
+            'label' => ' Guardar',
             'attr'  => array('class'=>'btn btn-primary'),
         ));
 
@@ -190,8 +190,8 @@ class PensumController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
-            'attr'  => array('class'=>'btn btn-primary'),
+            'label' => ' Actualizar',
+            'attr'  => array('class'=>'btn btn-success fa fa-refresh'),
         ));
 
         return $form;
@@ -267,7 +267,10 @@ class PensumController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('pensum_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => ' Borrar',
+                'attr'  => array('class'=>'btn btn-danger fa fa-pencil'),
+                ))
             ->getForm()
         ;
     }

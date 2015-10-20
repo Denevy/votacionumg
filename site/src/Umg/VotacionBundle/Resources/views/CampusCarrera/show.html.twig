@@ -38,10 +38,8 @@
                                 <td>{{ cursos.PensumAnio.Curso }}</td>
                                 <td>{{ cursos.PensumAnio.Pensum }}</td>
                                 <td>
-                                    <ul>
-                                        <li><a href="{{ path('carreracurso_show', { 'id': cursos.id }) }}">ver</a></li>
-                                        <li><a href="{{path('carreracurso_edit', { 'id': cursos.id }) }}">editar</a></li>
-                                    </ul>
+                                    <a href="{{ path('carreracurso_show', { 'id': cursos.id }) }}" class="bnt btn-success fa fa-money"> Ver</a>
+                                    <a href="{{ path('carreracurso_edit', { 'id': cursos.id }) }}" class="btn btn-danger fa fa-edit"> Editar</a>
                                 </td>
                             </tr>
                         {% endfor %}

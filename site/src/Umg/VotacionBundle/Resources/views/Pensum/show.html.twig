@@ -1,25 +1,27 @@
 {% extends '::base.html.twig' %}
-{% block titulo %}
-    <h1 class="page-title">{{ entity.Anio }}</h1>
-{% endblock %}
-
 {% block body -%}
-    <h1>Lista de cursos del pensum</h1>
-<div class="table-responsive">
-    
-            <div class="table-bordered">
-                {{ addDataTable(dataTable) }}
-            </div>
-        </div>
-        <br/>
-        <ul class="record_actions">
-    <a href={{path('pensumanio_new', {'id':entity.id})}} class='btn btn-primary'>Asignar nuevo curso</a>
-    <br />
-    <li>
-        <a href="{{ path('pensum') }}">
-            Regresar a la lista
-        </a>
-    </li>
 
-</ul>
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="page-title">{{ entity.Anio }}</h1>
+                            Lista de cursos del pensum
+                        </div>
+                        <div class="panel-body">
+                            <div class="table table-striped table-bordered table-hover table-responsive">
+                                {{ addDataTable(dataTable) }}
+                            </div>  
+                        </div>
+                        <a href="{{ path('pensumanio_new', {'id':entity.id}) }}" class="fa fa-check btn btn-success">
+                            Asignar nuevo curso
+                         </a>
+                         <a href="{{ path('pensum') }}" class="btn btn-info fa fa-list">
+                         Regresar a la lista
+                         </a>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>       
 {% endblock %}

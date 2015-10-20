@@ -1,32 +1,31 @@
 {% extends '::base.html.twig' %}
-
-{% block titulo %}
-    <h1 class="page-title">{{ entity.Curso }}</h1>
-    <p class="lead">Código: {{entity.Codigo}} Carrera: {{entity.Carrera}}</p>
-{% endblock %}
-
 {% block body -%}
-
-    <table class="table table-striped">
-        <tbody>
-            <tr>
-                <th>Pensum</th>
-                <td>{{ entity.Pensum }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('pensum_show', { 'id': entity.id })}}">
-            Regresar a la Lista
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('pensumanio_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="page-title">{{ entity.Curso }}</h1>
+                            <p class="lead">Código: {{entity.Codigo}} Carrera: {{entity.Carrera}}</p>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th>Pensum</th>
+                                            <td>{{ entity.Pensum }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a href="{{ path('pensum_show', { 'id': entity.id }) }}" class="fa fa-list btn btn-info"> Regresar a la lista</a>
+                            <a href="{{  path('pensumanio_edit', { 'id': entity.id }) }}" class="fa fa-edit btn btn-success" >Editar</a>
+                            {{ form(delete_form) }}
+                        </div>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>
 {% endblock %}
+

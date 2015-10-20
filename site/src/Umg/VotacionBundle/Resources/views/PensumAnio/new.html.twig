@@ -1,18 +1,19 @@
 {% extends '::base.html.twig' %}
-
-{% block titulo %}
-    <h1 class="page-title">Asignar curso a pensum</h1>
-{% endblock %}
-
 {% block body -%}
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('pensum', {'id': entity.Pensum.id}) }}">
-            Regresar al pensum
-        </a>
-    </li>
-</ul>
+    <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Asignación de Curso a Pensum
+                        </div>
+                        {{ form(form) }}
+    					<a href="{{  path('pensum', {'id': entity.Pensum.id}) }}" class="fa fa-list btn btn-info"> Regresar al pensum</a>  
+                        
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>       
 {% endblock %}
+
+

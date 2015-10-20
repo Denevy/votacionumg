@@ -1,21 +1,23 @@
 {% extends '::base.html.twig' %}
-{% block titulo %}
-    <h1 class="page-title">Lista de alumnos</h1>
-{% endblock %}
-
 {% block body -%}
-<div class="table-responsive">
-    
-            <div class="table-bordered">
-                {{ addDataTable(dataTable) }}
-            </div>
-        </div>
-        <br/>
-        <ul>
-        <li>
-            <a href="{{ path('alumno_new') }}">
-                Agregar nuevo alumno
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="page-title">Lista de alumnos</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table table-striped table-bordered table-hover table-responsive">
+                                {{ addDataTable(dataTable) }}
+                            </div>  
+                        </div>
+                        <a href="{{ path('alumno_new') }}" class="fa fa-check btn btn-success">
+                            Crear Alumno
+                         </a>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>       
+{% endblock %}
