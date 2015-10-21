@@ -1,16 +1,17 @@
 {% extends '::base.html.twig' %}
-
 {% block body -%}
-    <h1>Opcion edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('opcion') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h1> Editar Opción</h1>
+			</div>
+			<div>
+				{{ form(edit_form) }}
+				<a href="{{ path('opcion') }}" class="btn btn-info fa fa-list"> Regresar</a>
+				{{ form(delete_form) }}
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

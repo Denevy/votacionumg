@@ -1,15 +1,23 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>TipoPreguntum creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('tipopreguntum') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1>Crear Tipo de Pregunta</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                {{ form(form) }}
+                            </div>
+                            <a href="{{ path('tipopreguntum') }}" class="btn btn-info fa fa-list">
+                            Regresar
+                            </a>
+                        </div>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+</div>
 {% endblock %}

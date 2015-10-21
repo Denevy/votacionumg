@@ -76,7 +76,9 @@ class OpcionController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => ' Crear',
+            'attr'  => array('class' => 'btn btn-success fa fa-check'),
+            ));
 
         return $form;
     }
@@ -165,7 +167,9 @@ class OpcionController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => ' Actualizar',
+            'attr' => array('class' => 'btn btn-success fa fa-refresh '),
+            ));
 
         return $form;
     }
@@ -240,7 +244,10 @@ class OpcionController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('opcion_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => ' Borrar',
+                'attr' => array('class' => 'btn btn-danger fa fa-pencil'),
+                ))
             ->getForm()
         ;
     }

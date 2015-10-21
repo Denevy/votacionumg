@@ -78,8 +78,8 @@ class EvaluacionController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Guardar',
-            'attr'  => array('class' => 'btn btn-primary'),
+            'label' => ' Guardar',
+            'attr'  => array('class' => 'btn btn-success fa fa-check'),
         ));
 
         return $form;
