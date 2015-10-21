@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SEDUMG</a> 
+                <a class="navbar-brand" href="{{path('homepage')}}" rel="home">SEDUMG</a>                 
             </div>
             <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> Usuario: {{ app.user.username }} &nbsp; <a href={{path('fos_user_security_logout')}} class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
@@ -59,7 +59,8 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                    <img src={{ asset('bundles/umgvotacion/img/umg.png') }} class="user-image img-responsive"/>
+                    <img src={{ asset('bundles/umgvotacion/img/UMG.jpg') }} class="user-image img-responsive"/> 
+                    <!-- <img src={{ asset('bundles/umgvotacion/img/find_user.png') }} class="user-image img-responsive"/>-->
                     </li>     
                     <li>
                         <a class="#"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard <span class="fa arrow"></span></a>
