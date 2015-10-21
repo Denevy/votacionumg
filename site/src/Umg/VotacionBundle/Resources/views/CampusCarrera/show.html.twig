@@ -38,7 +38,7 @@
                                 <td>{{ cursos.PensumAnio.Curso }}</td>
                                 <td>{{ cursos.PensumAnio.Pensum }}</td>
                                 <td>
-                                    <a href="{{ path('carreracurso_show', { 'id': cursos.id }) }}" class="bnt btn-success fa fa-money"> Ver</a>
+                                    <a href="{{ path('carreracurso_show', { 'id': cursos.id }) }}" class="btn btn-success fa fa-money"> Ver</a>
                                     <a href="{{ path('carreracurso_edit', { 'id': cursos.id }) }}" class="btn btn-danger fa fa-edit"> Editar</a>
                                 </td>
                             </tr>
@@ -47,9 +47,7 @@
                     </table>
                     <a href={{ path('carreracurso_new', {'id': entity.id}) }} class="fa fa-pencil btn btn-success">Asignar cursos a carrera</a>
                     <br />              
-                        <a href="{{ path('campus_show', {'id':entity.Campus.id}) }}" class=" fa fa-list btn btn-info">
-                            Regresar a Campus
-                        </a>                    
+                        <a href="{{ path('campus_show', {'id':entity.Campus.id}) }}" class=" fa fa-list btn btn-info"> Regresar a Campus</a>                    
                         <a href="{{ path('campuscarrera_edit', { 'id': entity.id }) }}" class="fa fa-edit btn btn-danger">
                             Editar
                         </a>                                        

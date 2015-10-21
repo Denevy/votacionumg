@@ -27,8 +27,9 @@
       <!-- CUSTOM SCRIPTS -->
     <script src={{ asset('bundles/umgvotacion/js/custom.js') }}></script>
     <script src={{ asset('bundles/umgvotacion/js/jquery-1.10.2.js') }}></script>
-    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src={{ asset('bundles/umgvotacion/js/jquery-ui.js') }}></script>
+    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script> 
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
     <script type='text/javascript' src={{ asset('bundles/umgvotacion/js/jquery-migrate.min.js') }}></script>
     <script type='text/javascript' src={{ asset('bundles/umgvotacion/js/html5shiv.js') }}></script>
     <script type='text/javascript' src={{ asset('bundles/umgvotacion/js/respond.min.js') }}></script>
@@ -124,7 +125,7 @@
                         <a href="#"><i class="fa fa-sitemap fa-3x"></i>Reportes<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Reportes Docente</a>
+                                <a href={{path('chart')}}>Reportes Docente</a>
                             </li>
                         </ul>                               
                     </li>                        
