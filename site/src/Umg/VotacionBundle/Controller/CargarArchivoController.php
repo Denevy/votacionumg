@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Ddeboer\DataImport\Reader\ExcelReader;
 use Symfony\Component\HttpFoundation\Response;
 use Umg\VotacionBundle\Entity\Carrera;
+use Umg\VotacionBundle\Entity\Alumno;
 use Umg\VotacionBundle\Entity\Curso;
 use Umg\VotacionBundle\Entity\Catedratico;
 use Umg\VotacionBundle\Entity\PensumAnio;
@@ -126,6 +127,47 @@ class CargarArchivoController extends Controller
                       }
                     }
                       //var_dump($nomestudiante);
+
+//introducir el listado a la base
+for($x=0;$x<=$lista;$x++){
+  $est=new Alumno();
+  $est->setNombre($nomestudiante[$x]);
+  $est->setCarne($codigoestudiante[$x]);
+  $em = $this->getDoctrine()->getManager();
+  $em->getConnection()->beginTransaction();
+    try 
+    {
+      $em->persist($est);
+      $em->flush();
+
+      $userManager = $this->container->get('fos_user.user_manager');
+      $userAdmin = $userManager->createUser();
+
+      $userAdmin->setUsername($est->getCarne());
+      $userAdmin->setEmail($est->getCarne().'@example.com');
+      $userAdmin->setPlainPassword($est->getCarne());
+      $userAdmin->setEnabled(true);
+      $userManager->updateUser($userAdmin, true);
+
+      $est->setUsuario($userAdmin);
+      $em->persist($est);
+      $em->flush();
+
+      $em->getConnection()->commit();
+        return $this->redirect($this->generateUrl('alumno'));
+    } 
+    catch (Exception $e) 
+    {
+      $em->getConnection()->rollback();
+      return array(
+       'est' => $est,
+        'form'   => $form->createView(),
+        );
+    throw $e;
+  }
+}
+
+
 /*
 Consulta de Carrera
 */
@@ -157,6 +199,7 @@ Consulta de Catedratico
 Consultar de Codigos de alumnos que no estan creados
 */
 
+
 for ($x = 0; $x<= $lista; $x++)
 {
   $coda = $codigoestudiante[$x];
@@ -168,6 +211,9 @@ for ($x = 0; $x<= $lista; $x++)
     $noalumno[]=$coda;
     //echo "estoy aca";
   }
+  
+  
+ 
 }
     $contandoalumnos=count($noalumno);
     $cantalum=$contandoalumnos-1;
@@ -188,6 +234,10 @@ for ($x = 0; $x<= $lista; $x++)
     //echo "estoy aca";
   }
 }
+
+
+
+
 //var_dump($nomnoalumno);
 /*
 Consulta de alumnos que si estan creados
