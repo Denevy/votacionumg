@@ -82,7 +82,7 @@ class PensumController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => ' Guardar',
-            'attr'  => array('class'=>'btn btn-primary'),
+            'attr'  => array('class'=>'btn btn-success fa fa-check'),
         ));
 
         return $form;
