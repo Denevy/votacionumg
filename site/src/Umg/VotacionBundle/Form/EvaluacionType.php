@@ -19,15 +19,10 @@ class EvaluacionType extends AbstractType
             ->add('Activa')
             ->add('FechaHora')
             ->add('FechaHoraFinal')
-            ->add('campusCarrera','entity',array(
-                'class' => 'UmgVotacionBundle:CampusCarrera',
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->findCarreraCoordinador();
-                },
-            ))
+            ->add('campusCarrera')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
