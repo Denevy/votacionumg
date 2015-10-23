@@ -1,17 +1,21 @@
 {% extends '::base.html.twig' %}
 {% block titulo %}
-    <h1 class="page-title">Asignación de respuestas</h1>
 {% endblock %}
 {% block body -%}
-
-    {{ form_javascript(form) }}
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('evaluacion_show', {'id': entity.Preguntum.Evaluacion.id}) }}">
-            Regresar a la lista
-        </a>
-    </li>
-</ul>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h1 class="page-title">Asignación de respuestas</h1>
+      </div>
+      <div class="panel-body">
+        {{ form_javascript(form) }}
+        {{ form(form) }}
+            <a href="{{ path('evaluacion_show', {'id': entity.Preguntum.Evaluacion.id}) }}" class="btn btn-info fa fa-list">
+                Regresar a la lista
+            </a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

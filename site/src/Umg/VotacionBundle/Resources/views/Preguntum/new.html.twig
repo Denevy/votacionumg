@@ -1,18 +1,21 @@
 {% extends '::base.html.twig' %}
-
 {% block titulo %}
-    <h1 class="page-title">Nueva pregunta</h1>
 {% endblock %}
-
 {% block body -%}
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('evaluacion_show', {'id':entity.Evaluacion.id}) }}">
-            Regresar a la evaluación
-        </a>
-    </li>
-</ul>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+      <h1 class="page-title">Nueva pregunta</h1>
+      </div>
+      <div class="panel-body">
+        {{ form(form) }}
+            <a href="{{ path('evaluacion_show', {'id':entity.Evaluacion.id}) }}" class="btn btn-info fa fa-list">
+                Regresar a la evaluación
+            </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
 {% endblock %}
