@@ -1,60 +1,59 @@
 {% extends '::base.html.twig' %}
-
 {% block titulo %}
-    <h1 class="page-title">{{entity.CampusCarrera}}</h1>
-    <p class="lead">Fecha inicio: {{ entity.FechaHora|date('Y-m-d H:i:s') }}<br />
-    Fecha finalización: {{ entity.FechaHoraFinal|date('Y-m-d H:i:s') }}</p>
 {% endblock %}
-
 {% block body -%}
-    <h2>{% if entity.Activa == 1 %} Activa {% else %} No Activa {% endif %}</h2>
 
-    <h1> Preguntas </h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Pregunta</th>
-                <th>Opciones</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for pregunta in entity.getPregunta %}
-            <tr>
-                <td>{{ pregunta.Pregunta }}</td>
-                <td>
-                    <ul class="list-group list-group-flush">
-                        {% set nuevo = 1 %}
-                    {%for opcion in pregunta.getOpcionPregunta %}
-                        {% set nuevo = 0 %}
-                        <li class="list-group-item">{{opcion.Opcion}}
-                        <span class="badge">
-                            <a href={{path('opcionpreguntum_delete',{'id':opcion.id})}}> <span class="glyphicon glyphicon-trash" ></span></a></span></li>
-                    {%endfor%}
-                    </ul>
-                        <a href={{path('opcionpreguntum_new',{'id':pregunta.id})}}>Agregar respuestas</a>
-                </td>
-                <td>
-                    <ul>
-                        <li><a href="{{path('preguntum_edit', { 'id': pregunta.id }) }}">editar</a></li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href={{path('preguntum_new',{'id':entity.id})}} class='btn btn-primary'>Nueva pregunta</a>
-    <br />
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('evaluacion') }}">
-            Regresar al listado
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('evaluacion_edit', { 'id': entity.id }) }}">
-            Editar
-        </a>
-    </li>
-</ul>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h1 class="page-title">{{entity.CampusCarrera}}</h1>
+        <p class="lead">Fecha inicio: {{ entity.FechaHora|date('Y-m-d H:i:s') }}<br />
+        Fecha finalización: {{ entity.FechaHoraFinal|date('Y-m-d H:i:s') }}</p>
+      </div>
+      <div class="panel-body">
+        <h2>Estatus: {% if entity.Activa == 1 %} Activa {% else %} No Activa {% endif %}</h2>
+        <h1> Preguntas </h1>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Opciones</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pregunta in entity.getPregunta %}
+                <tr>
+                    <td>{{ pregunta.Pregunta }}</td>
+                    <td>
+                        <ul class="list-group list-group-flush">
+                            {% set nuevo = 1 %}
+                        {%for opcion in pregunta.getOpcionPregunta %}
+                            {% set nuevo = 0 %}
+                            <li class="list-group-item">{{opcion.Opcion}}
+                            <span class="badge">
+                                <a href={{path('opcionpreguntum_delete',{'id':opcion.id})}}> <span class="glyphicon glyphicon-trash" ></span></a></span></li>
+                        {%endfor%}
+                        </ul>
+                            <a href={{path('opcionpreguntum_new',{'id':pregunta.id})}}>Agregar respuestas</a>
+                    </td>
+                    <td>
+                            <a href="{{path('preguntum_edit', { 'id': pregunta.id }) }}" class="btn btn-danger fa fa-edit">Editar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href={{path('preguntum_new',{'id':entity.id})}} class='btn btn-success fa fa-edit'>Nueva pregunta</a>
+            <a href="{{ path('evaluacion') }}" class="btn btn-info fa fa-list">
+                Regresar al listado
+            </a>
+            <a href="{{ path('evaluacion_edit', { 'id': entity.id }) }}" class="btn btn-danger fa fa-pencil">
+                Editar
+            </a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
