@@ -9,10 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Ddeboer\DataImport\Reader\ExcelReader;
 use Symfony\Component\HttpFoundation\Response;
 use Umg\VotacionBundle\Entity\Carrera;
-use Umg\VotacionBundle\Entity\Alumno;
 use Umg\VotacionBundle\Entity\Curso;
 use Umg\VotacionBundle\Entity\Catedratico;
 use Umg\VotacionBundle\Entity\PensumAnio;
+use Umg\VotacionBundle\Entity\Alumno;
 use PHPExcel;
 use PHPExcel_IOFactory;
 
@@ -127,47 +127,6 @@ class CargarArchivoController extends Controller
                       }
                     }
                       //var_dump($nomestudiante);
-
-//introducir el listado a la base
-for($x=0;$x<=$lista;$x++){
-  $est=new Alumno();
-  $est->setNombre($nomestudiante[$x]);
-  $est->setCarne($codigoestudiante[$x]);
-  $em = $this->getDoctrine()->getManager();
-  $em->getConnection()->beginTransaction();
-    try 
-    {
-      $em->persist($est);
-      $em->flush();
-
-      $userManager = $this->container->get('fos_user.user_manager');
-      $userAdmin = $userManager->createUser();
-
-      $userAdmin->setUsername($est->getCarne());
-      $userAdmin->setEmail($est->getCarne().'@example.com');
-      $userAdmin->setPlainPassword($est->getCarne());
-      $userAdmin->setEnabled(true);
-      $userManager->updateUser($userAdmin, true);
-
-      $est->setUsuario($userAdmin);
-      $em->persist($est);
-      $em->flush();
-
-      $em->getConnection()->commit();
-        return $this->redirect($this->generateUrl('alumno'));
-    } 
-    catch (Exception $e) 
-    {
-      $em->getConnection()->rollback();
-      return array(
-       'est' => $est,
-        'form'   => $form->createView(),
-        );
-    throw $e;
-  }
-}
-
-
 /*
 Consulta de Carrera
 */
@@ -198,8 +157,6 @@ Consulta de Catedratico
 /*
 Consultar de Codigos de alumnos que no estan creados
 */
-
-
 for ($x = 0; $x<= $lista; $x++)
 {
   $coda = $codigoestudiante[$x];
@@ -211,12 +168,18 @@ for ($x = 0; $x<= $lista; $x++)
     $noalumno[]=$coda;
     //echo "estoy aca";
   }
-  
-  
- 
 }
-    $contandoalumnos=count($noalumno);
-    $cantalum=$contandoalumnos-1;
+if(empty($noalumno))
+{
+  $contandoalumnos=0;
+  $cantalum=$contandoalumnos;
+}else{
+  $contandoalumnos=count($noalumno);
+  $cantalum=$contandoalumnos-1;  
+}
+
+
+        
     //var_dump($cantalum);
 /*
 Consulta de Nombres de alumnos que no estan creados
@@ -235,9 +198,47 @@ for ($x = 0; $x<= $lista; $x++)
   }
 }
 
+if(!empty($noalumno)){
+  
 
+for($x=0;$x<=$cantalum;$x++){
+  $entity=new Alumno();
+  $entity->setNombre($nomnoalumno[$x]);
+  $entity->setCarne($noalumno[$x]);
+    $em = $this->getDoctrine()->getManager();
+    $em->getConnection()->beginTransaction();
+    try 
+    {
+      $em->persist($entity);
+      $em->flush();
 
+      $userManager = $this->container->get('fos_user.user_manager');
+      $userAdmin = $userManager->createUser();
 
+      $userAdmin->setUsername($entity->getCarne());
+      $userAdmin->setEmail($entity->getCarne().'@example.com');
+      $userAdmin->setPlainPassword($entity->getCarne());
+      $userAdmin->setEnabled(true);
+      $userManager->updateUser($userAdmin, true);
+
+      $entity->setUsuario($userAdmin);
+      $em->persist($entity);
+      $em->flush();
+
+      $em->getConnection()->commit();
+    //return $this->redirect($this->generateUrl('alumno'));
+    } 
+    catch (Exception $e) 
+    {
+      $em->getConnection()->rollback();
+      return array(
+      'entity' => $entity,
+      //'form'   => $form->createView(),
+      );
+    throw $e;
+    }
+  }
+}
 //var_dump($nomnoalumno);
 /*
 Consulta de alumnos que si estan creados
@@ -270,8 +271,7 @@ consulta los que estan asginados al curso
           $queryasignatura->setParameter('codigocurso', $codcur);
           $noasigalumno =$queryasignatura->getResult();
         //var_dump($alumnosumg);
-
-      return $this->render('UmgVotacionBundle:CargarArchivo:show.html.twig',array(
+          return $this->render('UmgVotacionBundle:CargarArchivo:show.html.twig',array(
         'tabla'   => $file,
         'snc'     => $snc,
         'carrera' => $carrera,
@@ -292,5 +292,8 @@ consulta los que estan asginados al curso
         'nomnoalumno' => $nomnoalumno,
         'cantalum' => $cantalum,
       ));
+         
+
+      
     }
 }
