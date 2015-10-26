@@ -162,6 +162,7 @@ for ($x = 0; $x<= $lista; $x++)
   $coda = $codigoestudiante[$x];
   $alum = $em->getRepository('UmgVotacionBundle:Alumno')->findOneBy(array('Carne'=> $coda));
   $varalum[]=$alum;
+  $noalumno=array();
   $ResultAlumno = 'Existente Valida';
   if(!$alum)
   {
@@ -190,6 +191,7 @@ for ($x = 0; $x<= $lista; $x++)
   $nom = $nomestudiante[$x];
   $nomalum = $em->getRepository('UmgVotacionBundle:Alumno')->findOneBy(array('Nombre'=> $nom));
   $varalum[]=$alum;
+  $nomnoalumno=array();
   $ResultAlumno = 'Existente Valida';
   if(!$nomalum)
   {
