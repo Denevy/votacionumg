@@ -162,6 +162,7 @@ for ($x = 0; $x<= $lista; $x++)
   $coda = $codigoestudiante[$x];
   $alum = $em->getRepository('UmgVotacionBundle:Alumno')->findOneBy(array('Carne'=> $coda));
   $varalum[]=$alum;
+  $noalumno=array();
   $ResultAlumno = 'Existente Valida';
   if(!$alum)
   {
@@ -190,6 +191,7 @@ for ($x = 0; $x<= $lista; $x++)
   $nom = $nomestudiante[$x];
   $nomalum = $em->getRepository('UmgVotacionBundle:Alumno')->findOneBy(array('Nombre'=> $nom));
   $varalum[]=$alum;
+  $nomnoalumno=array();
   $ResultAlumno = 'Existente Valida';
   if(!$nomalum)
   {
@@ -203,6 +205,7 @@ if(!empty($noalumno)){
 
 for($x=0;$x<=$cantalum;$x++){
   $entity=new Alumno();
+  $alumcurso=new AlumnoCurso();
   $entity->setNombre($nomnoalumno[$x]);
   $entity->setCarne($noalumno[$x]);
     $em = $this->getDoctrine()->getManager();
@@ -211,7 +214,7 @@ for($x=0;$x<=$cantalum;$x++){
     {
       $em->persist($entity);
       $em->flush();
-
+      //creando usuario para el alumno
       $userManager = $this->container->get('fos_user.user_manager');
       $userAdmin = $userManager->createUser();
 
@@ -224,6 +227,10 @@ for($x=0;$x<=$cantalum;$x++){
       $entity->setUsuario($userAdmin);
       $em->persist($entity);
       $em->flush();
+
+      //relacionando alumno con el curso
+      $alumcurso->setAlumno_id($entity->getId);
+      $alumcurso->setCarreraCurso_id($carrera[0]);
 
       $em->getConnection()->commit();
     //return $this->redirect($this->generateUrl('alumno'));

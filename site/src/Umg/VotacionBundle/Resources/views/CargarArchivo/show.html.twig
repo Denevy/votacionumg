@@ -3,7 +3,7 @@
 {% endblock %}
 {% block body %}
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12">p
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h1 class="page-title"> Visualización de Estudiantes </h1>
@@ -110,7 +110,8 @@
               <tbody>
               <td class="success">Carné</td>
               <td class="success">Alumno</td>
-                {% for i in 0..cantalum %}
+              {%if cantalum!=0%}
+              {% for i in 0..cantalum %}
               <tr>
               <td>
                     {{noalumno[i]}}
@@ -120,6 +121,8 @@
               </td>
               </tr>
               {%endfor%}  
+              {%endif%}
+
               
               </tbody>
           </table>
