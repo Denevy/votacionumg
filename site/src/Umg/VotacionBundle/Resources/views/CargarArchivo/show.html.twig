@@ -110,8 +110,9 @@
               <tbody>
               <td class="success">Carné</td>
               <td class="success">Alumno</td>
-              {%if cantalum!=0%}
-              {% for i in 0..cantalum %}
+            {%if noalumno is empty%}
+            {%else%}
+              {% for i in 0..cantalum%}
               <tr>
               <td>
                     {{noalumno[i]}}
@@ -122,7 +123,7 @@
               </tr>
               {%endfor%}  
               {%endif%}
-
+        
               
               </tbody>
           </table>

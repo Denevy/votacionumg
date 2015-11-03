@@ -134,6 +134,7 @@ Consulta de Carrera
         $snc = $codecarrera[0];
         $em = $this->getDoctrine()->getManager();
         $carrera = $em->getRepository('UmgVotacionBundle:CampusCarrera')->findOneBy(array('Codigo'=>$snc));
+        var_dump($carrera);
 /*
 Consulta de Curso
 */
@@ -154,6 +155,13 @@ Consulta de Catedratico
           'catedratico'=>$cat,
           'carreraCurso'=>$curs,
         ));
+
+        $catcur = $em->getRepository('UmgVotacionBundle:CatedraticoCurso')->findOneBy(array(
+          'catedratico'=>$cat,
+          'carreraCurso'=>$curs,
+        ));
+        
+
 /*
 Consultar de Codigos de alumnos que no estan creados
 */
@@ -179,15 +187,11 @@ if($contandoalumnos==0){
 }else{
   $cantalum=$contandoalumnos-1;
 }
-
-
-
-        
+     
     //var_dump($cantalum);
 /*
 Consulta de Nombres de alumnos que no estan creados
 */
-
 for ($x = 0; $x<= $lista; $x++)
 {
   $nom = $nomestudiante[$x];
@@ -200,12 +204,17 @@ for ($x = 0; $x<= $lista; $x++)
     //echo "estoy aca";
   }
 }
+//buscar campusCarreraId
+$campCarrera= $em->getRepository('UmgVotacionBundle:CampusCarrera')->findOneBy(array('Codigo'=>$snc,
+  ));
 
-if($cantalum!=0){
+
+if(!empty($noalumno)){
   
 
 for($x=0;$x<=$cantalum;$x++){
   $entity=new Alumno();
+  //$alcur=new AlumnoCurso();
   $entity->setNombre($nomnoalumno[$x]);
   $entity->setCarne($noalumno[$x]);
     $em = $this->getDoctrine()->getManager();
@@ -242,6 +251,8 @@ for($x=0;$x<=$cantalum;$x++){
     }
   }
 }
+
+
 //var_dump($nomnoalumno);
 /*
 Consulta de alumnos que si estan creados
@@ -274,6 +285,8 @@ consulta los que estan asginados al curso
           $queryasignatura->setParameter('codigocurso', $codcur);
           $noasigalumno =$queryasignatura->getResult();
         //var_dump($alumnosumg);
+
+        
           return $this->render('UmgVotacionBundle:CargarArchivo:show.html.twig',array(
         'tabla'   => $file,
         'snc'     => $snc,
