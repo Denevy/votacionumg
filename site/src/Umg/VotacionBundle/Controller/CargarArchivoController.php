@@ -134,13 +134,24 @@ Consulta de Carrera
         $snc = $codecarrera[0];
         $em = $this->getDoctrine()->getManager();
         $carrera = $em->getRepository('UmgVotacionBundle:CampusCarrera')->findOneBy(array('Codigo'=>$snc));
-        
+        $Idcarrera;
+        if(!empty($carrera)){
+          $Idcarrera=$carrera->getId();
+          //var_dump($Idcarrera);
+        }
 /*
 Consulta de Curso
 */
         $codcur = $codecurso[0];
         $curs = $em->getRepository('UmgVotacionBundle:PensumAnio')->findOneBy(array('Codigo'=> $codcur));
         $ResultCurso = 'Existente Valida';
+        $Idcurso;
+        if(!empty($curs)){
+          $Idcurso=$curs->getId();
+          //var_dump($Idcurso);
+        }
+        
+
 
 /*
 Consulta de Catedratico
@@ -150,18 +161,17 @@ Consulta de Catedratico
 //        var_dump($cc);
         $cat = $em->getRepository('UmgVotacionBundle:Catedratico')->findOneBy(array('Codigo'=>$codcat));
         $ResultCatedratico = 'Existente Valida';
+        $Idcatedratico;
+        if(!empty($cat)){
+          $Idcatedratico=$cat->getId();
+          //var_dump($Idcatedratico);
+        }
 
         $catcur = $em->getRepository('UmgVotacionBundle:CatedraticoCurso')->findOneBy(array(
           'catedratico'=>$cat,
           'carreraCurso'=>$curs,
         ));
-
-        $catcur = $em->getRepository('UmgVotacionBundle:CatedraticoCurso')->findOneBy(array(
-          'catedratico'=>$cat,
-          'carreraCurso'=>$curs,
-        ));
-        
-
+       
 /*
 Consultar de Codigos de alumnos que no estan creados
 */
@@ -204,56 +214,55 @@ for ($x = 0; $x<= $lista; $x++)
     //echo "estoy aca";
   }
 }
-//buscar campusCarreraId
-$campCarrera= $em->getRepository('UmgVotacionBundle:CampusCarrera')->findOneBy(array('Codigo'=>$snc,
-  ));
 
 
-if(!empty($noalumno)){
+if(empty($Idcarrera)||empty($Idcurso)||empty($Idcatedratico)){
+  $salida='no se encontro';
+  var_dump($salida);
+}else{
+  if(!empty($noalumno)){
   
 
-for($x=0;$x<=$cantalum;$x++){
-  $entity=new Alumno();
-  //$alcur=new AlumnoCurso();
-  $entity->setNombre($nomnoalumno[$x]);
-  $entity->setCarne($noalumno[$x]);
-    $em = $this->getDoctrine()->getManager();
-    $em->getConnection()->beginTransaction();
-    try 
-    {
-      $em->persist($entity);
-      $em->flush();
-      //creando usuario para el alumno
-      $userManager = $this->container->get('fos_user.user_manager');
-      $userAdmin = $userManager->createUser();
+    for($x=0;$x<=$cantalum;$x++){
+      $entity=new Alumno();
+      //$alcur=new AlumnoCurso();
+      $entity->setNombre($nomnoalumno[$x]);
+      $entity->setCarne($noalumno[$x]);
+      $em = $this->getDoctrine()->getManager();
+      $em->getConnection()->beginTransaction();
+      try 
+      {
+        $em->persist($entity);
+        $em->flush();
+        //creando usuario para el alumno
+        $userManager = $this->container->get('fos_user.user_manager');
+        $userAdmin = $userManager->createUser();
 
-      $userAdmin->setUsername($entity->getCarne());
-      $userAdmin->setEmail($entity->getCarne().'@example.com');
-      $userAdmin->setPlainPassword($entity->getCarne());
-      $userAdmin->setEnabled(true);
-      $userManager->updateUser($userAdmin, true);
+        $userAdmin->setUsername($entity->getCarne());
+        $userAdmin->setEmail($entity->getCarne().'@example.com');
+        $userAdmin->setPlainPassword($entity->getCarne());
+        $userAdmin->setEnabled(true);
+        $userManager->updateUser($userAdmin, true);
 
-      $entity->setUsuario($userAdmin);
-      $em->persist($entity);
-      $em->flush();
+        $entity->setUsuario($userAdmin);
+        $em->persist($entity);
+        $em->flush();
 
-      $em->getConnection()->commit();
-    //return $this->redirect($this->generateUrl('alumno'));
-    } 
-    catch (Exception $e) 
-    {
-      $em->getConnection()->rollback();
-      return array(
-      'entity' => $entity,
-      //'form'   => $form->createView(),
-      );
-    throw $e;
+        $em->getConnection()->commit();
+        //return $this->redirect($this->generateUrl('alumno'));
+      } 
+      catch (Exception $e) 
+      {
+        $em->getConnection()->rollback();
+        return array(
+        'entity' => $entity,
+        //'form'   => $form->createView(),
+        );
+        throw $e;
+      }
     }
   }
-}
-
-
-//var_dump($nomnoalumno);
+  //var_dump($nomnoalumno);
 /*
 Consulta de alumnos que si estan creados
 */
@@ -285,6 +294,8 @@ consulta los que estan asginados al curso
           $queryasignatura->setParameter('codigocurso', $codcur);
           $noasigalumno =$queryasignatura->getResult();
         //var_dump($alumnosumg);
+
+}
 
         
           return $this->render('UmgVotacionBundle:CargarArchivo:show.html.twig',array(
