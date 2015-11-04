@@ -134,7 +134,7 @@ Consulta de Carrera
         $snc = $codecarrera[0];
         $em = $this->getDoctrine()->getManager();
         $carrera = $em->getRepository('UmgVotacionBundle:CampusCarrera')->findOneBy(array('Codigo'=>$snc));
-        var_dump($carrera);
+        
 /*
 Consulta de Curso
 */
