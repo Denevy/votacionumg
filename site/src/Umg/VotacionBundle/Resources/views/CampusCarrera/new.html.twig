@@ -8,10 +8,9 @@
                             Asignación de Carrera a Campus
                         </div>
                         {{ form_javascript(form) }}
-                        {{ form(form) }}
-    					<a href="{{ path('campus_show', {id:entity.Campus.id}) }}" class="fa fa-list btn btn-info"> Regresar a Campus </a>  
-                        
+                        {{ form(form) }}                        
                     </div>
+    					<a href="{{ path('campus_show', {id:entity.Campus.id}) }}" class="icon-signout btn btn-info"> Regresar a Campus </a>  
                      <!-- End Form Elements -->
                 </div>
 </div>       

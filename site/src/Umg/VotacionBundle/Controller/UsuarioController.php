@@ -77,7 +77,10 @@ class UsuarioController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array(
+            'label' => ' Guardar',
+            'attr'  => array('class' => 'icon-save btn btn-primary'),
+        ));
 
         return $form;
     }
@@ -174,7 +177,10 @@ class UsuarioController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array(
+            'label' => ' Actualizar',
+            'attr'  => array('class' => 'icon-refresh btn btn-primary'),
+        ));
 
         return $form;
     }
@@ -249,7 +255,10 @@ class UsuarioController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('usuario_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => ' Borrar',
+                'attr'  => array('class' => 'btn btn-danger icon-eraser'),
+            ))
             ->getForm()
         ;
     }

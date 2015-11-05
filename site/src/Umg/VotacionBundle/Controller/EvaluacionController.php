@@ -79,7 +79,7 @@ class EvaluacionController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => ' Guardar',
-            'attr'  => array('class' => 'btn btn-success fa fa-check'),
+            'attr'  => array('class' => 'icon-save btn btn-success'),
         ));
 
         return $form;
@@ -171,8 +171,8 @@ class EvaluacionController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
-            'attr'  => array('class' => 'btn btn-primary'),
+            'label' => ' Actualizar',
+            'attr'  => array('class' => 'icon-refresh btn btn-primary'),
         ));
 
         return $form;
@@ -248,7 +248,9 @@ class EvaluacionController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('evaluacion_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => ' Borrar',
+                'attr'  => array('class'=>'icon-eraser btn btn-danger'),))
             ->getForm()
         ;
     }

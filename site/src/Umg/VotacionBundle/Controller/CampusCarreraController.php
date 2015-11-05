@@ -77,8 +77,8 @@ class CampusCarreraController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Guardar',
-            'attr'  => array('class'=>'fa fa-check btn btn-success'),
+            'label' => ' Guardar',
+            'attr'  => array('class'=>'icon-save btn btn-success'),
         ));
 
         return $form;
@@ -176,8 +176,8 @@ class CampusCarreraController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
-            'attr'  => array('class' => 'fa fa-check btn btn-success'),
+            'label' => ' Actualizar',
+            'attr'  => array('class' => 'icon-refresh btn btn-success'),
         ));
 
         return $form;
@@ -254,8 +254,8 @@ class CampusCarreraController extends Controller
             ->setAction($this->generateUrl('campuscarrera_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
-                'label' => 'Delete',
-                'attr'  => array('class'=>'btn btn-info'),
+                'label' => ' Borrar',
+                'attr'  => array('class'=>'icon-eraser btn btn-info'),
                 ))
             ->getForm()
         ;

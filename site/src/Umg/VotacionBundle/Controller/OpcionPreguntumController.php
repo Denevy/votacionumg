@@ -99,8 +99,8 @@ class OpcionPreguntumController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Guardar',
-            'attr'  => array('class' => 'btn btn-primary'),
+            'label' => ' Guardar',
+            'attr'  => array('class' => 'icon-save btn btn-primary'),
         ));
 
         return $form;
@@ -199,8 +199,8 @@ class OpcionPreguntumController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
-            'attr'  => array('class' => 'btn btn-primary'),
+            'label' => ' Actualizar',
+            'attr'  => array('class' => 'icon-refresh btn btn-primary'),
         ));
 
         return $form;
@@ -271,7 +271,10 @@ class OpcionPreguntumController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('opcionpreguntum_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => ' Borrar',
+                'attr' => array('class' => 'icon-eraser btn btn-danger'),
+                ))
             ->getForm()
         ;
     }

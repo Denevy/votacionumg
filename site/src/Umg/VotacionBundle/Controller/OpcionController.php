@@ -76,8 +76,8 @@ class OpcionController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => ' Crear',
-            'attr'  => array('class' => 'btn btn-success fa fa-check'),
+        $form->add('submit', 'submit', array('label' => ' Guardar',
+            'attr'  => array('class' => 'icon-save btn btn-success'),
             ));
 
         return $form;
@@ -168,7 +168,7 @@ class OpcionController extends Controller
         ));
 
         $form->add('submit', 'submit', array('label' => ' Actualizar',
-            'attr' => array('class' => 'btn btn-success fa fa-refresh '),
+            'attr' => array('class' => 'icon-refresh btn btn-success'),
             ));
 
         return $form;
@@ -246,7 +246,7 @@ class OpcionController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
                 'label' => ' Borrar',
-                'attr' => array('class' => 'btn btn-danger fa fa-pencil'),
+                'attr' => array('class' => 'icon-eraser btn btn-danger'),
                 ))
             ->getForm()
         ;

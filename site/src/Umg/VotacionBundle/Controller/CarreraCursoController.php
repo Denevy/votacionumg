@@ -101,7 +101,7 @@ class CarreraCursoController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => ' Guardar',
-            'attr'  => array('class' => 'btn btn-success fa fa-pencil'),
+            'attr'  => array('class' => 'btn btn-success icon-save'),
         ));
 
         return $form;
@@ -225,8 +225,8 @@ class CarreraCursoController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
-            'attr'  => array('class' => 'btn btn-primary'),
+            'label' => ' Actualizar',
+            'attr'  => array('class' => 'icon-refresh btn btn-primary'),
         ));
 
         return $form;
@@ -302,7 +302,10 @@ class CarreraCursoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('carreracurso_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => ' Borrar',
+                'attr'  => array('class'=>'icon-eraser btn btn-info'),
+                ))
             ->getForm()
         ;
     }

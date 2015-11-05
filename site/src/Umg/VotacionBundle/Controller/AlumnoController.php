@@ -111,7 +111,7 @@ class AlumnoController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => ' Guardar',
-            'attr'  => array('class' => 'btn btn-primary fa fa-check'),
+            'attr'  => array('class' => 'btn btn-primary icon-save'),
         ));
 
         return $form;
@@ -203,7 +203,7 @@ class AlumnoController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => ' Actualizar',
-            'attr'  => array('class' => 'btn btn-success fa fa-refresh'),
+            'attr'  => array('class' => 'btn btn-success icon-refresh'),
         ));
 
         return $form;
@@ -281,7 +281,7 @@ class AlumnoController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
                 'label' => ' Borrar',
-                'attr'  => array('class' => 'btn btn-danger fa fa-pencil'),
+                'attr'  => array('class' => 'btn btn-danger icon-eraser'),
             ))
             ->getForm()
         ;

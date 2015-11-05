@@ -81,8 +81,8 @@ class JornadaController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Crear',
-            'attr'  => array('class'=>'fa fa-check btn btn-success'),
+            'label' => ' Guardar',
+            'attr'  => array('class'=>' icon-save btn btn-success'),
             ));
         return $form;
     }
@@ -172,8 +172,8 @@ class JornadaController extends Controller
         ));
 
         $form->add('submit', 'submit', array(
-            'label' => 'Actualizar',
-            'attr'  => array('class'=>'fa fa-refresh btn btn-success'),
+            'label' => ' Actualizar',
+            'attr'  => array('class'=>'icon-refresh btn btn-success'),
             ));
 
         return $form;
@@ -250,8 +250,8 @@ class JornadaController extends Controller
             ->setAction($this->generateUrl('jornada_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
-                'label' => 'Eliminar',
-                'attr'  => array('class'=>'fa fa-pencil btn btn-danger'),
+                'label' => ' Eliminar',
+                'attr'  => array('class'=>'icon-eraser btn btn-danger'),
                 ))
             ->getForm()
         ;

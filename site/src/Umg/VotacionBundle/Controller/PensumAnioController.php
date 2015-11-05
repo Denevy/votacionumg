@@ -78,7 +78,7 @@ class PensumAnioController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => ' Guardar',
-            'attr'  => array('class' => 'btn btn-success fa fa-check'),
+            'attr'  => array('class' => 'icon-save btn btn-success'),
         ));
 
         return $form;
@@ -178,7 +178,7 @@ class PensumAnioController extends Controller
 
         $form->add('submit', 'submit', array(
             'label' => ' Actualizar',
-            'attr'  => array('class' => 'btn btn-success fa fa-refresh'),
+            'attr'  => array('class' => 'icon-refresh btn btn-success'),
         ));
 
         return $form;
@@ -255,8 +255,8 @@ class PensumAnioController extends Controller
             ->setAction($this->generateUrl('pensumanio_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
-                'label' => 'Delete',
-                'attr'  => array('class' => 'btn btn-danger fa fa-pencil'),
+                'label' => ' Borrar',
+                'attr'  => array('class' => 'icon-eraser btn btn-danger'),
                 ))
             ->getForm()
         ;

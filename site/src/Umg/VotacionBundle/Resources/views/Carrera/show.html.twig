@@ -25,11 +25,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ path('carrera') }}" class="fa fa-list btn btn-info">Regresar</a>
-                            <a href="{{ path('carrera_edit', { 'id': entity.id }) }}" class="btn fa fa-edit btn-success" >Editar</a>
                             {{ form(delete_form) }}
                         </div>
                     </div>
+                            <a href="{{ path('carrera') }}" class="icon-signout btn btn-info"> Regresar</a>
+                            <a href="{{ path('carrera_edit', { 'id': entity.id }) }}" class="icon-edit-sign btn btn-success" > Editar</a>
                      <!-- End Form Elements -->
                 </div>
 </div>
