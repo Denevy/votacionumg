@@ -15,8 +15,12 @@ class AlumnoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Nombre')
-            ->add('Carne')
+            ->add('Nombre', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Carne', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
         ;
     }
     

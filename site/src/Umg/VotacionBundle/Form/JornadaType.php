@@ -15,8 +15,9 @@ class JornadaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Jornada')
-        ;
+            ->add('Jornada', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ));
     }
     
     /**

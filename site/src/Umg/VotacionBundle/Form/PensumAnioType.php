@@ -15,10 +15,18 @@ class PensumAnioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Codigo')
-            ->add('curso')
-            ->add('carrera')
-            ->add('pensum')
+            ->add('Codigo', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('curso', null, array(
+            'attr' => array('class' => 'form-control m-bot15'),
+            ))
+            ->add('carrera', null, array(
+            'attr' => array('class' => 'form-control m-bot15'),
+            ))
+            ->add('pensum', null, array(
+            'attr' => array('class' => 'form-control m-bot15'),
+            ))
         ;
     }
     

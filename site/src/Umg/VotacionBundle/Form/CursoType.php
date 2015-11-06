@@ -15,8 +15,9 @@ class CursoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Curso')
-        ;
+            ->add('Curso', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ));
     }
     
     /**

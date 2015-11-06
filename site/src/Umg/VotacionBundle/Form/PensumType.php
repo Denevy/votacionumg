@@ -15,7 +15,9 @@ class PensumType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Anio')
+            ->add('Anio', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
         ;
     }
     

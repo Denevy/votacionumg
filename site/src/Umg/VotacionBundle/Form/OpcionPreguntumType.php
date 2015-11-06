@@ -15,7 +15,9 @@ class OpcionPreguntumType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('preguntum')
+            ->add('preguntum', null , array(
+            'attr' => array('class' => 'form-control'),
+            ))
             ->add('opcion','genemu_jqueryselect2_entity',array(
                 'class' => 'Umg\VotacionBundle\Entity\Opcion',
                 'empty_value' => 'Seleccione las respuestas',

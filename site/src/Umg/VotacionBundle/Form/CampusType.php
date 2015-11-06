@@ -15,8 +15,9 @@ class CampusType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Campus')
-        ;
+            ->add('Campus', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ));
     }
     
     /**

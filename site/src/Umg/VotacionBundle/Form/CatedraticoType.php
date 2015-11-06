@@ -15,17 +15,37 @@ class CatedraticoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Codigo')
-            ->add('Nombre')
-            ->add('Direccion')
-            ->add('Nit')
+            ->add('Codigo', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Nombre', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Direccion', 'textarea', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Nit', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
             ->add('FechaNacimiento')
-            ->add('Colegiado')
-            ->add('Especialidad')
-            ->add('Universidad')
-            ->add('Graduacion')
-            ->add('Estudios')
-            ->add('Logros')
+            ->add('Colegiado', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Especialidad', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Universidad', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Graduacion', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Estudios', 'textarea', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('Logros', 'textarea', array(
+            'attr' => array('class' => 'form-control'),
+            ))
         ;
     }
     

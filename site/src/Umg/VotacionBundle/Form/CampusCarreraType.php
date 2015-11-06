@@ -15,10 +15,18 @@ class CampusCarreraType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Codigo')
-            ->add('carrera')
-            ->add('jornada')
-            ->add('campus')
+            ->add('Codigo', 'text', array(
+            'attr' => array('class' => 'form-control'),
+            ))
+            ->add('carrera', null, array(
+            'attr' => array('class' => 'form-control m-bot15'),
+            ))
+            ->add('jornada', null, array(
+            'attr' => array('class' => 'form-control m-bot15'),
+            ))
+            ->add('campus', null, array(
+            'attr' => array('class' => 'form-control m-bot15'),
+            ))
             ->add('catedratico','genemu_jqueryselect2_entity',array(
                 'class' => 'Umg\VotacionBundle\Entity\Catedratico',
                 'empty_value' => 'Seleccione coordinador',

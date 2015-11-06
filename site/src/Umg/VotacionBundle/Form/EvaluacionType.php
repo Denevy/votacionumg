@@ -19,7 +19,9 @@ class EvaluacionType extends AbstractType
             ->add('Activa')
             ->add('FechaHora')
             ->add('FechaHoraFinal')
-            ->add('campusCarrera')
+            ->add('campusCarrera', null , array(
+            'attr' => array('class' => 'form-control'),
+            ))
         ;
     }
 
