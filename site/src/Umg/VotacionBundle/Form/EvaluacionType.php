@@ -17,8 +17,14 @@ class EvaluacionType extends AbstractType
     {
         $builder
             ->add('Activa')
-            ->add('FechaHora')
-            ->add('FechaHoraFinal')
+            ->add('FechaHora','datetime',array(
+                'date_widget' => "single_text", 
+                'time_widget' => "single_text"
+            ))
+            ->add('FechaHoraFinal','datetime',array(
+                'date_widget' => "single_text", 
+                'time_widget' => "single_text"
+            ))
             ->add('campusCarrera', null , array(
             'attr' => array('class' => 'form-control'),
             ))

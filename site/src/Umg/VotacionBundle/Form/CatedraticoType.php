@@ -27,7 +27,10 @@ class CatedraticoType extends AbstractType
             ->add('Nit', 'text', array(
             'attr' => array('class' => 'form-control'),
             ))
-            ->add('FechaNacimiento')
+            ->add('FechaNacimiento','date', array(
+            'widget' => 'single_text',
+            'format' => 'yyyy-MM-dd',
+            ))
             ->add('Colegiado', 'text', array(
             'attr' => array('class' => 'form-control'),
             ))
