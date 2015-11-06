@@ -15,6 +15,7 @@ use Umg\VotacionBundle\Entity\PensumAnio;
 use Umg\VotacionBundle\Entity\Alumno;
 use Umg\VotacionBundle\Entity\AlumnoCurso;
 use Umg\VotacionBundle\Entity\CarreraCurso;
+use Umg\VotacionBundle\Entity\CarreraCursoRepository;
 use Umg\VotacionBundle\Entity\AlumnoRepository;
 use PHPExcel;
 use PHPExcel_IOFactory;
@@ -183,6 +184,9 @@ Consulta de Catedratico
         $consul=$carreraCur[0];
         $Idcc=$consul["id"];
         //var_dump($CodigoCarreraCurso);
+
+        //consulta carreracurso
+        $ccurso= $em->getRepository('UmgVotacionBundle:CarreraCurso')->find($Idcc);
         
         
        
@@ -190,7 +194,10 @@ Consulta de Catedratico
 Consultar de Codigos de alumnos que no estan creados
 */
 $noalumno=array();
+$noalumno2=array();
 $nomnoalumno=array();
+$alumnosumg=array();
+$noasigalumno=array();
 for ($x = 0; $x<= $lista; $x++)
 {
   $coda = $codigoestudiante[$x];
@@ -202,7 +209,23 @@ for ($x = 0; $x<= $lista; $x++)
     $noalumno[]=$coda;
     //echo "estoy aca";
   }
+  if(!empty($alum)){
+    $alum2 = $em->getRepository('UmgVotacionBundle:AlumnoCurso')->findOneBy(array('Alumno_id'=> $alum->getId()));
+    if(empty($alum2)){
+      $inAl=new AlumnoCurso();
+      $inAl->setAlumnoId($alum->getId());
+      $inAl->setCarreraCursoId($Idcc);
+      $inAl->setAlumno($alum);
+      $inAl->setCarreraCurso($ccurso);
+      $em->persist($inAl);
+      $em->flush();
+
+    }
+
+  }
+
 }
+
 
 $cantalum;
 $contandoalumnos=count($noalumno);
@@ -228,6 +251,13 @@ for ($x = 0; $x<= $lista; $x++)
     //echo "estoy aca";
   }
 }
+
+
+
+//asignar curso a alumos que se encuentran en la base
+
+
+
 $Idalum=array();
 
 if(empty($Idcarrera)||empty($Idcurso)||empty($Idcatedratico)){
@@ -235,7 +265,6 @@ if(empty($Idcarrera)||empty($Idcurso)||empty($Idcatedratico)){
   var_dump($salida);
 }else{
   if(!empty($noalumno)){
-  
 
     for($x=0;$x<=$cantalum;$x++){
       $entity=new Alumno();
@@ -262,6 +291,11 @@ if(empty($Idcarrera)||empty($Idcurso)||empty($Idcatedratico)){
         $em->flush();
         $Idalum[]=$entity->getId();
 
+        $alcur=new AlumnoCurso();
+        $alcur->setAlumno($entity);
+        $alcur->setCarreraCurso($ccurso);
+        $em->persist($alcur);
+        $em->flush();
         
         
         
@@ -278,23 +312,6 @@ if(empty($Idcarrera)||empty($Idcurso)||empty($Idcatedratico)){
         );
         throw $e;
       }
-    }
-  }
-  if(!empty($Idalum)){
-    for($x=0;$x<=$cantalum;$x++){
-      $alcur=new AlumnoCurso();
-      $em->this->getDoctrine()->getManager();
-      $alcur->setCarreraCursoId($Idcc);
-      $alcur->setAlumnoId($Idalum[$x]);
-      try{
-        $em->persist($alcur);
-        $em->flush();
-      }
-      catch(Exception $e){
-        $em->getConnection()->rollback();
-        throw $e;
-      }
-
     }
   }
   

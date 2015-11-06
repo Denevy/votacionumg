@@ -69,7 +69,7 @@
               </table>
               <h2><h2>
         </form>
-          <h3>Alumnos Existentes y Asignados</h3>
+          <h3>Alumnos Asignados</h3>
           <table  class="table table-striped">
               <tbody>
               <td class="warning">Carné</td>
@@ -87,25 +87,7 @@
               </tbody>
           </table>
           </br>
-          <h3>Alumnos Existentes y No Asignados</h3>
-          <table  class="table table-striped">
-              <tbody>
-              <td class="danger">Carné</td>
-              <td class="danger">Alumno</td>
-              {% for line in veralumno %}
-              <tr>
-              <td>
-                    {{line.Carne}}
-              </td>
-              <td>
-                    {{line.Nombre}}
-              </td>
-              </tr>
-              {%endfor%}
-              </tbody>
-          </table>
-          </br>
-          <h3>Alumnos que se crearan y asignaran</h3>
+          <h3>Alumnos que se crearon</h3>
           <table  class="table table-striped">
               <tbody>
               <td class="success">Carné</td>
