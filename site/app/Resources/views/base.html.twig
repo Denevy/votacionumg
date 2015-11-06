@@ -318,11 +318,13 @@
 
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="icon-cogs"></i>
+                          <i class=" icon-folder-open-alt"></i>
                           <span>Cargar Archivo</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href={{path('cargararchivo')}}>Cargar Alumnos</a></li>
+                          <li>
+                          <a  href={{path('cargararchivo')}} class=" icon-copy"> Cargar Alumnos</a>
+                          </li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -336,7 +338,7 @@
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="icon-th"></i>
+                          <i class=" icon-gears "></i>
                           <span>Configuración</span>
                       </a>
                       <ul class="sub">
@@ -378,6 +380,7 @@
       <!--footer end-->
   </section>
     <script src={{ asset('bundles/umgvotacion/js/select2.min.js') }}></script>
+     <script src={{ asset('bundles/umgvotacion/js/bootstrap-filestyle.min.js')}} > </script>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src={{ asset('bundles/umgvotacion/js/jquery-1.10.2.js')}} ></script>
     <script src={{ asset('bundles/umgvotacion/js/bootstrap.min.js')}} ></script>

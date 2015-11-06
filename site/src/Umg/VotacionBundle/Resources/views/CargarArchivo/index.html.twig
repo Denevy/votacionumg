@@ -13,10 +13,10 @@
         <form role="form" method="post" enctype="multipart/form-data" action='{{path('showarchivo')}}'>
           <div class="input-group">
             <label class="sr-only">Archivo</label>
-            <input type="file" name="archivo" class="form-control" />
+            <input type="file" name="archivo" class="filestyle" data-buttonName="btn-primary" data-placeholder="No ha seleccionado" data-buttonText="Busca Archivo"/>
             <p class="help-block">Formatos adminitidos (.xls .xlsx .ods .csv .xlt)</p>
           </div>
-          <button type="submit" class="btn btn-success fa fa-refresh"> Subir</button>
+          <button type="submit" class="btn btn-danger fa fa-refresh icon-upload-alt"> Subir</button>
         </form>
         <hr/>
       </div>
