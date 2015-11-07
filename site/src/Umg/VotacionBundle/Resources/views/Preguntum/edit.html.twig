@@ -8,12 +8,12 @@
       </div>
       <div class="panel-body">
         {{ form(edit_form) }}
-            <a href="{{ path('preguntum') }}" class="btn btn-info fa fa-list">
-                Regresar
-            </a>
         {{ form(delete_form) }}
       </div>
     </div>
+            <a href="{{ path('preguntum') }}" class="btn btn-info icon-signout">
+                Regresar
+            </a>
   </div>
 </div>
 {% endblock %}

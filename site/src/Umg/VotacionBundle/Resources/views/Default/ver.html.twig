@@ -1,44 +1,59 @@
-{% extends '::base.html.twig' %}
+{% extends '::estudiante.html.twig' %}
 {% block titulo %}
-    <h1 class="page-title">{{evaluacion.CampusCarrera}}</h1>
 {% endblock %}
 
 {% block body -%}
-<h2> Catedráticos calificados </h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th width="50%">Curso</th>
-            <th>Catedrático</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for catedratico in cc %}
-        <tr>
-            <td>{{catedratico.PensumAnio}}</td>
-            <td>{% for cat in catedratico.CatedraticoCursos%} {{cat.Catedratico}} {% endfor %}</td>
-            <td><a href="{{path('mostrar',{'eid':evaluacion.id,'ccid':catedratico.id,'aid':alumno.id})}}">Ver</a></td>
-    {% endfor %}
-    </tbody>
-</table>
-<h2> Catedráticos no calificados </h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th width="50%">Curso</th>
-            <th>Catedrático</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for catedratico in cnc %}
-        <tr>
-            <td>{{catedratico.carreraCurso}}</td>
-            <td>{{catedratico.catedratico}}</td>
-            <td><a href="{{path('evaluar',{'eid':evaluacion.id,'ccid':catedratico.id,'aid':alumno.id})}}">Evaluar</a></td>
-    {% endfor %}
-    </tbody>
-</table>
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="page-title">{{evaluacion.CampusCarrera}}</h1>
+                            <h2> Catedráticos calificados </h2>
+                        </div>
+                        <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Curso</th>
+                                    <th>Catedrático</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for catedratico in cc %}
+                                <tr>
+                                    <td>{{catedratico.PensumAnio}}</td>
+                                    <td>{% for cat in catedratico.CatedraticoCursos%} {{cat.Catedratico}} {% endfor %}</td>
+                                    <td><a href="{{path('mostrar',{'eid':evaluacion.id,'ccid':catedratico.id,'aid':alumno.id})}}" class="btn btn-success icon-eye-open"> Ver</a></td>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <h2> Catedráticos no calificados </h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Curso</th>
+                                    <th>Catedrático</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for catedratico in cnc %}
+                                <tr>
+                                    <td>{{catedratico.carreraCurso}}</td>
+                                    <td>{{catedratico.catedratico}}</td>
+                                    <td><a href="{{path('evaluar',{'eid':evaluacion.id,'ccid':catedratico.id,'aid':alumno.id})}}" class="btn btn-danger icon-book"> Evaluar</a></td>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                        <a href="{{ path('homepage') }}" class="btn btn-info"><i class="icon-signout"></i>
+                            Regresar
+                         </a>
+                     <!-- End Form Elements -->
+                </div>
+</div> 
 
 {% endblock %}

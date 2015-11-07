@@ -1,32 +1,44 @@
-{% extends '::base.html.twig' %}
+{% extends '::estudiante.html.twig' %}
 {% block titulo %}
-    <h1 class="page-title">Evaluación docente</h1>
-    <p class="lead">{{cc.PensumAnio.Codigo}} - {{cc.PensumAnio.Curso}}<br />{% for cat in cc.catedraticoCursos%}{{cat}}{%endfor%}</p>
 {% endblock %}
 
 {% block body -%}
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                        <h1 class="page-title">Evaluación docente</h1>
+                        <p class="lead">{{cc.PensumAnio.Codigo}} - {{cc.PensumAnio.Curso}}<br />{% for cat in cc.catedraticoCursos%}{{cat}}{%endfor%}</p>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-responsive">
+                                {% set id = 0 %}
+                                {% set tipo = 0 %}
+                                {% for resp in respuestas %}
+                                    <tr>
+                                        <th width="50%">
+                                            {% if resp.Observacion %}
+                                                Observaciones
+                                            {%else%}
+                                                {{resp.Preguntum.Pregunta}}
+                                            {%endif%}
+                                        <td> {{resp.Respuesta}} </td>
+                                    </tr>
+                                {% endfor %}
+                            </table> 
+                        </div>
+                    </div>
+                    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('ver_resultado',{'id':evaluacion.id}) }}" class="btn btn-success icon-signout">
+                                Regresar a la lista
+                            </a>
+                        </li>
+                    </ul>
+                     <!-- End Form Elements -->
+                </div>
+</div> 
 
-<table class="table table-responsive">
-    {% set id = 0 %}
-    {% set tipo = 0 %}
-    {% for resp in respuestas %}
-        <tr>
-            <th width="50%">
-                {% if resp.Observacion %}
-                    Observaciones
-                {%else%}
-                    {{resp.Preguntum.Pregunta}}
-                {%endif%}
-            <td> {{resp.Respuesta}} </td>
-        </tr>
-    {% endfor %}
-</table>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('ver_resultado',{'id':evaluacion.id}) }}">
-            Regresar a la lista
-        </a>
-    </li>
-</ul>
 {% endblock %}

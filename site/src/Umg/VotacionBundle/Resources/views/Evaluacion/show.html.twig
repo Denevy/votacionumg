@@ -36,20 +36,20 @@
                                 <a href={{path('opcionpreguntum_delete',{'id':opcion.id})}}> <span class="glyphicon glyphicon-trash" ></span></a></span></li>
                         {%endfor%}
                         </ul>
-                            <a href={{path('opcionpreguntum_new',{'id':pregunta.id})}}>Agregar respuestas</a>
+                            <a href={{path('opcionpreguntum_new',{'id':pregunta.id})}} class="btn btn-info icon-exchange"> Agregar respuestas</a>
                     </td>
                     <td>
-                            <a href="{{path('preguntum_edit', { 'id': pregunta.id }) }}" class="btn btn-danger fa fa-edit">Editar</a>
+                            <a href="{{path('preguntum_edit', { 'id': pregunta.id }) }}" class="btn btn-danger icon-edit-sign">Editar</a>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
         <a href={{path('preguntum_new',{'id':entity.id})}} class='btn btn-success fa fa-edit'>Nueva pregunta</a>
-            <a href="{{ path('evaluacion') }}" class="btn btn-info fa fa-list">
+            <a href="{{ path('evaluacion') }}" class="btn btn-info icon-signout">
                 Regresar al listado
             </a>
-            <a href="{{ path('evaluacion_edit', { 'id': entity.id }) }}" class="btn btn-danger fa fa-pencil">
+            <a href="{{ path('evaluacion_edit', { 'id': entity.id }) }}" class="btn btn-danger icon-edit-sign">
                 Editar
             </a>
       </div>
