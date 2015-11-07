@@ -10,10 +10,10 @@
                         </div>
                         <div class="panel-body">
                             {{ form(edit_form) }} 
-                            <a href="{{ path('pensum_show', {'id':entity.Pensum.id}) }}"  class="fa fa-list btn btn-info"> Regresar al pensum</a>
                             {{ form(delete_form) }}
                         </div>
                     </div>
+                            <a href="{{ path('pensum_show', {'id':entity.Pensum.id}) }}"  class="icon-signout btn btn-info"> Regresar al pensum</a>
                      <!-- End Form Elements -->
                 </div>
 </div>

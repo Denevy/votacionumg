@@ -19,11 +19,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ path('pensum_show', { 'id': entity.Carrera.id }) }}" class="fa fa-list btn btn-info"> Regresar a la lista</a>
-                            <a href="{{  path('pensumanio_edit', { 'id': entity.id }) }}" class="fa fa-edit btn btn-success" >Editar</a>
                             {{ form(delete_form) }}
                         </div>
                     </div>
+                            <a href="{{ path('pensum_show', { 'id': entity.Carrera.id }) }}" class="icon-signout btn btn-info"> Regresar a la lista</a>
+                            <a href="{{  path('pensumanio_edit', { 'id': entity.id }) }}" class="icon-edit-sign btn btn-success" > Editar</a>
                      <!-- End Form Elements -->
                 </div>
 </div>
