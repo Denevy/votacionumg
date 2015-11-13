@@ -9,17 +9,15 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     </div>
 {% endif %}
-
-<img src={{asset('bundles/umgvotacion/img/umg.png')}} alt="test" class="img-circle">
-<form id="loginform" action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-    {#<label for="username">{{ 'security.login.username'|trans }}</label>#}
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"   placeholder="Nombre de Usuario"/>
-
-    {#<label for="password">{{ 'security.login.password'|trans }}</label>#}
-    <input type="password" id="password" name="_password" required="required" placeholder="Contraseña"/>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
+      <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+        <h2 class="form-signin-heading">Iniciar Sesión</h2>
+        <div class="login-wrap">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required"   placeholder="Nombre de Usuario" autofocus >
+            <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Contraseña">
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}">Sign in</button>
+            <p>Ingrese sus Credenciales de Acceso</p>
+        </div>
+          <!-- modal -->
+      </form>
 {% endblock fos_user_content %}
