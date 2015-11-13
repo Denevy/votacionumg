@@ -6,16 +6,18 @@ use Doctrine\ORM\EntityRepository;
 
 class EvaluacionRepository extends EntityRepository
 {
-    public function findCarreraCoordinador()
+    public function findCarreraCoordinador($user)
     {
-        $user = '8511';
+        
         return $this->getEntityManager()
         ->createQueryBuilder()
         ->select('c')
         ->from('UmgVotacionBundle:CampusCarrera', 'c')
         ->innerJoin('c.catedratico','ca')
-        ->where('ca.Codigo = :codigo')
-        ->setParameter('codigo', $user);
+        ->where('ca.Usuario_id = :codigo')
+        ->setParameter('codigo', $user)
+        ->getQuery()
+        ->getResult();
     }
 
     public function findPunteoCatedraticoCarrera($catedratico,$carrera)

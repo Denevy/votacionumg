@@ -131,3 +131,7 @@ evaluacion_home:
 #rcatedratico_home:
 #    resource:   "@UmgVotacionBundle/Controller/RcatedraticoController.php"
 #    type:       annotation
+
+resultado:
+    path: /reporte
+    defaults: { _controller: UmgVotacionBundle:Default:reporte }

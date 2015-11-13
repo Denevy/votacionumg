@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<div class="row">
+  <div class="col-md-12">
+      <!-- Form Elements -->
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h1>Carreras Coordinador</h1>
+          </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                     {#   <th>Id</th>#}
+                        <th>Carrera</th>
+                        <th>Campus</th>
+                        <th>Jornada</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                       {# <td><a href="{{ path('campuscarrera_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+                        <td>{{ entity.Carrera.Carrera }}</td>
+                        <td>{{ entity.Campus.Campus }}</td>
+                        <td>{{ entity.Jornada.Jornada }}</td>
+                        <td>
+                        <ul>
+                                <a href="{{ path('campuscarrera_show', { 'id': entity.id }) }}" class="btn btn-success icon-eye-open"> Ver</a>
+                                <a href="{{ path('campuscarrera_edit', { 'id': entity.id }) }}" class="btn btn-danger icon-edit-sign"> Editar</a>
+                        </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+  </div>
+       <!-- End Form Elements -->
+  </div>
+</div>      
+    {% endblock %}

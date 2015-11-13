@@ -180,4 +180,16 @@ class DefaultController extends Controller
             'chart' => $ob
         ));
     }
+
+    public function reporteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $entities = $em->getRepository('UmgVotacionBundle:CampusCarrera')->findCarreraCoordinador($usr->getId());
+        
+        return $this->render('UmgVotacionBundle:Default:carrera.html.twig', array(
+            'entities' => $entities,
+        ));
+
+    }
 }

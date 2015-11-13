@@ -403,6 +403,6 @@ class CampusCarrera
 
     public function __toString()
     {
-        return $this->Codigo.' '.$this->carrera;
+        return $this->Codigo.' '.$this->carrera ;
     }
 }
