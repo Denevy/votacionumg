@@ -10,6 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Umg\VotacionBundle\Entity\Evaluacion;
 use Umg\VotacionBundle\Entity\Respuestum;
 use Umg\VotacionBundle\Entity\Opcion;
+use Umg\VotacionBundle\Entity\EvalucionRepository;
+use Umg\VotacionBundle\Entity\Catedratico;
+use Umg\VotacionBundle\Entity\Carrera;
 use Ob\HighchartsBundle\Highcharts\Highchart;
 
 class DefaultController extends Controller
@@ -164,17 +167,26 @@ class DefaultController extends Controller
 
     public function chartAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        //buscar catedratico con form
+        $cat=new catedratico();
+        //buscar carrera con form
+        $carr=new carrera();
+
+        //$datos=$em->getRepository('UmgVotacionBundle:EvaluacionRepository')->findPunteoCatedraticoCarrera($cat,$carr);
+
     // Chart
     $series = array(
         array("name" => "Data Serie Name",    "data" => array(1,2,4,5,6,3,8))
     );
-
+   
     $ob = new Highchart();
     $ob->chart->renderTo('linechart');  // The #id of the div where to render the chart
-    $ob->title->text('Chart Title');
+    $ob->title->text('Catedratico');
     $ob->xAxis->title(array('text'  => "Horizontal axis title"));
     $ob->yAxis->title(array('text'  => "Vertical axis title"));
     $ob->series($series);
+
 
     return $this->render('UmgVotacionBundle:Default:chart.html.twig', array(
             'chart' => $ob
@@ -183,6 +195,8 @@ class DefaultController extends Controller
 
     public function reporteAction()
     {
+
+
         $em = $this->getDoctrine()->getManager();
         $usr= $this->get('security.context')->getToken()->getUser();
         $entities = $em->getRepository('UmgVotacionBundle:CampusCarrera')->findCarreraCoordinador($usr->getId());
