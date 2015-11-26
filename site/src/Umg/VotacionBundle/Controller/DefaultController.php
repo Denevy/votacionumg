@@ -22,10 +22,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $usr= $this->get('security.context')->getToken()->getUser();
         $alumno = $em->getRepository('UmgVotacionBundle:Alumno')->findBy(array('usuario'=>$usr));
-        //dump();
-
-        //die();
-
+        $coordi = $em->getRepository('UmgVotacionBundle:CampusCarrera')->findCarreraCoordinador($usr);
 
         if(count($alumno) > 0)
         {       
@@ -36,7 +33,10 @@ class DefaultController extends Controller
                 'evaluaciones' => $evaluacion,
             ));
         }
-        else
+        if(!empty($coordi)){
+            return $this->render('UmgVotacionBundle:Default:coor.html.twig');
+        }
+        if(empty($alumno)&&empty($coordi))
         {       
             $evaluacion = $em->getRepository('UmgVotacionBundle:Alumno')->findEvaluaciones($usr->getId());
         
@@ -45,6 +45,7 @@ class DefaultController extends Controller
                 'evaluaciones' => $evaluacion,
             ));
         }   
+
     }
 
     public function verAction($id)
